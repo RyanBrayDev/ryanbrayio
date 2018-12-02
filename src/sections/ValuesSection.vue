@@ -13,7 +13,7 @@
 </template>
 
 <script>
-    import SectionHeading from './SectionHeading.vue'
+    import SectionHeading from '../components/SectionHeading.vue'
 
     export default {
         name: "ValuesSection",

@@ -25,6 +25,21 @@
 
     h2 {
         color: #484848;
-        font-size: 2.2rem;
+        font-size: 1.2rem;
+        line-height: 2.2rem;
+    }
+
+    @media (min-width: 768px) {
+        .about-me-wrapper {
+            text-align: center;
+            margin-left: 10%;
+            margin-right: 10%;
+        }
+
+        h2 {
+            color: #484848;
+            font-size: 2rem;
+            line-height: 3rem;
+        }
     }
 </style>

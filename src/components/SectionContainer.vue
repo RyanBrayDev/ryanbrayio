@@ -24,7 +24,7 @@
   }
 
   .container {
-    padding: 30px 30px;
+    padding: 50px 30px;
     margin-right: auto;
     margin-left: auto;
   }

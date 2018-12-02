@@ -1,40 +1,43 @@
 <template>
     <div>
         <hero-section></hero-section>
-        <section-container isAlternate=true>
+        <section-container :isAlternate=true>
             <about-me-section></about-me-section>
         </section-container>
         <section-container>
             <roles-section></roles-section>
         </section-container>
-        <section-container isAlternate=true>
+        <section-container :isAlternate=true>
             <values-section></values-section>
         </section-container>
         <section-container>
-            <projects-section></projects-section>
+            <capabilities-section></capabilities-section>
         </section-container>
-        <section-container isAlternate=true>
+        <section-container :isAlternate=true>
             <contact-me-section></contact-me-section>
         </section-container>
+        <footer-section></footer-section>
     </div>
 </template>
 
 <script>
-    import AboutMeSection from "./components/AboutMeSection";
-    import ValuesSection from "./components/ValuesSection";
-    import ProjectsSection from "./components/ProjectsSection";
-    import ContactMeSection from "./components/ContactMeSection";
-    import HeroSection from "./components/HeroSection";
-    import RolesSection from "./components/RolesSection";
+    import AboutMeSection from "./sections/AboutMeSection";
+    import ValuesSection from "./sections/ValuesSection";
+    import CapabilitiesSection from "./sections/CapabilitiesSection";
+    import ContactMeSection from "./sections/ContactMeSection";
+    import HeroSection from "./sections/HeroSection";
+    import RolesSection from "./sections/RolesSection";
     import AOS from 'aos';
     import 'aos/dist/aos.css';
     import SectionContainer from "./components/SectionContainer";
+    import FooterSection from "./sections/FooterSection";
 
     export default {
         name: 'app',
         components: {
+            FooterSection,
             SectionContainer,
-            ProjectsSection,
+            CapabilitiesSection,
             AboutMeSection,
             ContactMeSection,
             HeroSection,
