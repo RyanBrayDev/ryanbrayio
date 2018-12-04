@@ -1,7 +1,7 @@
 <template>
   <section data-aos="zoom-in">
     <section-heading>Contact me</section-heading>
-    <img src="../assets/images/avatar.jpg" height="200px">
+    <img src="../assets/images/avatar.jpg" height="200px" alt="Ryan Bray">
     <ul>
       <li><a href="https://www.linkedin.com/in/ryanbraydev/" target="_blank"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'linkedin' }" class="fa-2x"/></a></li>
       <li><a href="https://www.facebook.com/ryan.bray.982" target="_blank"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook' }" class="fa-2x"/></a></li>
