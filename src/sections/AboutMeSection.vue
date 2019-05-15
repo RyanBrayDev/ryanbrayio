@@ -1,45 +1,44 @@
 <template>
-    <div class="about-me-wrapper">
-        <h2>I am a software architect and leader in the Denver area. I
-            love working with teams and helping people
-            maximize their potential. Through relentless customer focus, failing fast and short feedback
-            loops, I believe we can transform how we
-            provide value to customers.</h2>
-    </div>
+  <div class="about-me-wrapper">
+    <h2>
+      I am a consultant and leader in the Denver area with a particular interest in how software design supports developer productivity and happiness.
+      I work for a technical consulting firm called Slalom as a Solution Principal. This site is intended to be an overview of my work and values.
+      Feel free to reach out to me through any of the links in the footer of the page.
+    </h2>
+  </div>
 </template>
 
 <script>
-    export default {
-        name: "AboutMeSection",
-    }
+export default {
+  name: "AboutMeSection"
+};
 </script>
 
 
 <style scoped lang="scss">
+.about-me-wrapper {
+  text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
+}
 
-    .about-me-wrapper {
-        text-align: center;
-        margin-left: 10%;
-        margin-right: 10%;
-    }
+h2 {
+  color: #484848;
+  font-size: 1.2rem;
+  line-height: 2.4rem;
+}
 
-    h2 {
-        color: #484848;
-        font-size: 1.2rem;
-        line-height: 2.2rem;
-    }
+@media (min-width: 768px) {
+  .about-me-wrapper {
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+  }
 
-    @media (min-width: 768px) {
-        .about-me-wrapper {
-            text-align: center;
-            margin-left: 10%;
-            margin-right: 10%;
-        }
-
-        h2 {
-            color: #484848;
-            font-size: 2rem;
-            line-height: 3rem;
-        }
-    }
+  h2 {
+    color: #484848;
+    font-size: 1.5rem;
+    line-height: 3rem;
+  }
+}
 </style>
