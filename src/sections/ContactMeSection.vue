@@ -1,7 +1,7 @@
 <template>
   <section data-aos="zoom-in">
     <section-heading>Contact me</section-heading>
-    <img src="../assets/images/avatar.jpg" height="200px">
+    <img src="../assets/images/avatar.jpg" alt="Photo of Ryan Bray">
     <ul>
       <li><a href="https://www.linkedin.com/in/ryanbraydev/" target="_blank"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'linkedin' }" class="fa-2x"/></a></li>
       <li><a href="https://www.facebook.com/ryan.bray.982" target="_blank"><font-awesome-icon :icon="{ prefix: 'fab', iconName: 'facebook' }" class="fa-2x"/></a></li>
@@ -34,7 +34,7 @@
     li{
       display:inline;
       padding: 0 10px;
-      heigh: 20px;
+      height: 20px;
 
       a{
         color: inherit;
@@ -45,6 +45,7 @@
   img{
     box-shadow: 2px 5px 5px rgba(0,0,0,.24), 0 0 2px rgba(0,0,0,.12);
     border-radius: 5px;
+    height: 200px;
   }
 
 </style>
