@@ -4,13 +4,16 @@ on:
   push:
     branches:
       - main
+      
+env:
+  AWS_S3_BUCKET: ${{ secrets.BUCKET_NAME }}
+  AWS_REGION: ${{ secrets.BUCKET_REGION }}
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    env:
-      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -21,19 +24,10 @@ jobs:
       - name: Build
         run: npm run build
         
-      - name: Deploy to S3
+      - name: Deploy to S3 bucket
         uses: reggionick/s3-deploy@v3
         with:
-          folder: build
-          bucket: ${{ secrets.BUCKET_NAME }}
-          bucket-region: ${{ secrets.BUCKET_REGION }}
-          delete-removed: true
-          no-cache: true
-          private: true
-          files-to-include: ".*/*,*/*,**"
-        env:
-          AWS_S3_BUCKET: ${{ secrets.BUCKET_NAME }}
-          AWS_REGION: ${{ secrets.BUCKET_REGION }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          SOURCE_DIR: ./dist
+          args: --acl public-read --delete
+          local_dir: dist
+          bucket: ${{ env.S3_BUCKET_NAME }}
+          folder: ${{ env.S3_BUCKET_PATH }}
