@@ -8,22 +8,29 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [16.x]
+    env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
       - name: Install dependencies
-        run: |
-          npm install
-          npm run build
-
+        run: npm install
+        
+      - name: Build
+        run: npm run build
+        
       - name: Deploy to S3
-        uses: mshick/s3-deploy@v0.2.0
+        uses: reggionick/s3-deploy@v3
         with:
-          args: --acl public-read --follow-symlinks --delete
+          folder: build
+          bucket: ${{ secrets.BUCKET_NAME }}
+          bucket-region: ${{ secrets.BUCKET_REGION }}
+          delete-removed: true
+          no-cache: true
+          private: true
+          files-to-include: "^dist\/.*$"
         env:
           AWS_S3_BUCKET: ${{ secrets.BUCKET_NAME }}
           AWS_REGION: ${{ secrets.BUCKET_REGION }}
