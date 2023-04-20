@@ -22,7 +22,13 @@ jobs:
         run: npm install
         
       - name: Build
-        run: npm run build
+        run: npm run build      
+      
+      - name: Configure AWS region
+        run: |
+          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws configure set region ${{ secrets.BUCKET_REGION }}
         
       - name: Deploy to S3 bucket
         uses: reggionick/s3-deploy@v3
@@ -30,4 +36,4 @@ jobs:
           args: --acl public-read --delete
           local_dir: dist
           bucket: ${{ env.S3_BUCKET_NAME }}
-          folder: ${{ env.S3_BUCKET_PATH }}
+          folder: dist
