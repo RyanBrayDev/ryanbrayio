@@ -7,7 +7,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [16.x]
@@ -21,7 +21,7 @@ jobs:
           npm run build
 
       - name: Deploy to S3
-        uses: jakejarvis/s3-sync-action@master
+        uses: mshick/s3-deploy@v0.2.0
         with:
           args: --acl public-read --follow-symlinks --delete
         env:
