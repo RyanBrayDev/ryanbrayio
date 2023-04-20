@@ -29,5 +29,3 @@ jobs:
           bucket-region: us-west-1
           delete-removed: true
           no-cache: true
-          private: true
-          files-to-include: ".*/*,*/*,**"
