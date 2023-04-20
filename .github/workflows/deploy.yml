@@ -6,10 +6,11 @@ on:
       - main
       
 env:
-  AWS_S3_BUCKET: ${{ secrets.BUCKET_NAME }}
-  AWS_REGION: ${{ secrets.BUCKET_REGION }}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_REGION: us-west-1
+  S3_BUCKET_NAME: ryanbray.io
+  S3_BUCKET_PATH: dist
 
 jobs:
   deploy:
@@ -24,16 +25,13 @@ jobs:
       - name: Build
         run: npm run build      
       
-      - name: Configure AWS region
-        run: |
-          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws configure set region ${{ secrets.BUCKET_REGION }}
-        
       - name: Deploy to S3 bucket
         uses: reggionick/s3-deploy@v3
         with:
           args: --acl public-read --delete
           local_dir: dist
           bucket: ${{ env.S3_BUCKET_NAME }}
-          folder: dist
+          folder: ${{ env.S3_BUCKET_PATH }}
+          access_key_id: ${{ env.AWS_ACCESS_KEY_ID }}
+          secret_access_key: ${{ env.AWS_SECRET_ACCESS_KEY }}
+          region: ${{ env.AWS_REGION }}
